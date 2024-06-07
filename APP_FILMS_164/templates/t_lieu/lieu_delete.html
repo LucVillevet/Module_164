@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %} Effacer un LIEU (WTF) {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Effacer un LIEU
+			</p>
+			<table class="table table-responsive-sm">
+				{% if data_lieu_del %}
+				<thead>
+				<tr>
+					<th class="">
+						Id
+					</th>
+					<th class="">
+						Emplacement
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for row in data_lieu_del %}
+				<tr>
+					<td class="align-middle">
+						{{ row.ID_lieu }}
+					</td>
+					<td class="align-middle">
+						{{ row.Emplacement }}
+					</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+				{% else %}
+				<tbody>
+				<tr>
+
+				</tr>
+				</tbody>
+				{% endif %}
+
+			</table>
+
+			<form action="" method="POST" novalidate>
+				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
+				{{ form_delete_lieu.hidden_tag() }}
+				{{ form_delete_lieu.submit_btn_conf_del_lieu(class="btn btn-info") }}
+
+				{% if btn_submit_del %}
+					{{ form_delete_lieu.submit_btn_del_lieu(class="btn btn-danger") }}
+				{% endif %}
+
+				{{ form_delete_lieu.submit_btn_annuler(class="btn btn-primary") }}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

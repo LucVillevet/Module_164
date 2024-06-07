@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} Ajouter un TIMBRE (WTF) {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Ajouter un nouveau TIMBRE (WTForms)
+			</p>
+			<form action="" method="POST" novalidate>
+				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
+				{{ form_add_timbre.hidden_tag() }}
+				<div class="form-group">
+					<p>
+						{{ form_add_timbre.fk_compte_add_wtf.label }}<br>
+						{{ form_add_timbre.fk_compte_add_wtf(size=40) }}<br>
+						{% for error in form_add_timbre.fk_compte_add_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_add_timbre.fk_emplacement_add_wtf.label }}<br>
+						{{ form_add_timbre.fk_emplacement_add_wtf(size=40) }}<br>
+						{% for error in form_add_timbre.fk_emplacement_add_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_add_timbre.date_add_wtf.label }}<br>
+						{{ form_add_timbre.date_add_wtf(size=40) }}<br>
+						{% for error in form_add_timbre.date_add_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_add_timbre.heure_add_wtf.label }}<br>
+						{{ form_add_timbre.heure_add_wtf(size=40) }}<br>
+						{% for error in form_add_timbre.heure_add_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_add_timbre.commentaire_add_wtf.label }}<br>
+						{{ form_add_timbre.commentaire_add_wtf(cols=60, rows=6) }}<br>
+						{% for error in form_add_timbre.commentaire_add_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_add_timbre.fk_type_add_wtf.label }}<br>
+						{{ form_add_timbre.fk_type_add_wtf(size=40) }}<br>
+						{% for error in form_add_timbre.fk_type_add_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+				</div>
+				{{ form_add_timbre.submit(class="btn btn-primary") }}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

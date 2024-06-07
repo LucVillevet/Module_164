@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %} Afficher LIEUX {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="col-md-12">
+		<table class="table table-responsive-sm">
+            {% if data %}
+				<thead>
+					<tr>
+						<th class="" >
+						  Id
+						</th>
+						<th class="" >
+						  Emplacement
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for row in data %}
+					<tr>
+					  <td class="align-middle">
+						{{ row.ID_lieu }}
+					  </td>
+					  <td class="align-middle">
+						{{ row.Emplacement }}
+					  </td>
+					  <td class="align-middle">
+						<a class="btn btn-warning" href="{{ url_for('lieu_update', id_lieu_edit_html=row.ID_lieu) }}" role="button">Modifier</a>
+					  </td>
+					  <td class="align-middle">
+						<a class="btn btn-danger" href="{{ url_for('lieu_delete', id_lieu_delete_html=row.ID_lieu) }}" role="button">Supprimer</a>
+					  </td>
+					</tr>
+				{% endfor %}
+					<tr>
+						<td class="align-middle">
+							<a class="btn btn-primary" href="{{ url_for('lieu_ajouter') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+			{% else %}
+				<tbody>
+					<tr>
+						<td>
+							Aucun emplacement.
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ url_for('lieu_ajouter') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+			{% endif %}
+		</table>
+	</div>
+</div>
+{% endblock %}

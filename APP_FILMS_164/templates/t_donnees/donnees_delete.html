@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %} Effacer un TIMBRE (WTF) {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Effacer ce timbre
+			</p>
+			<table class="table table-responsive-sm">
+				{% if data_timbre_del %}
+				<thead>
+					<tr>
+						<th class="" >
+						  Id
+						</th>
+						<th class="" >
+						  Compte
+						</th>
+						<th class="" >
+						  Lieu
+						</th>
+						<th class="" >
+						  Date
+						</th>
+						<th class="" >
+						  Heure
+						</th>
+						<th class="" >
+						  Type
+						</th>
+						<th class="" >
+						  Commentaire
+						</th>
+					</tr>
+				</thead>
+				{% endif %}
+				{% for row in data_timbre_del %}
+				<tbody>
+					<tr>
+						<td class="align-middle">
+					  	  {{ row.ID_donnee }}
+						</td>
+						<td class="align-middle">
+						  {{ row.Pseudo }}
+						</td>
+						<td class="align-middle">
+					  	  {{ row.Emplacement|default("", True) }}
+						</td>
+						<td class="align-middle">
+					  	  {{ row.Date|default("", True) }}
+						</td>
+						<td class="align-middle">
+					  	  {{ row.Heure|default("", True) }}
+						</td>
+						<td class="align-middle">
+					  	  {{ row.Type|default("", True) }}
+						</td>
+						<td class="align-middle">
+					  	  {{ row.Commentaire|default("", True) }}
+						</td>
+					</tr>
+				</tbody>
+				{% else %}
+				<tbody>
+					<tr>
+						<td class="align-middle">
+							La ligne selectionnée n'existe pas, ou plus...
+						</td>
+					</tr>
+				</tbody>
+				{% endfor %}
+
+			</table>
+
+			<form action="" method="POST" novalidate>
+				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
+				{{ form_delete_timbre.hidden_tag() }}
+				{{ form_delete_timbre.submit_btn_conf_del_timbre(class="btn btn-info") }}
+
+				{% if btn_submit_del %}
+					{{ form_delete_timbre.submit_btn_del_timbre(class="btn btn-danger") }}
+				{% endif %}
+
+				{{ form_delete_timbre.submit_btn_annuler(class="btn btn-primary") }}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

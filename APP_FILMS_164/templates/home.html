@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Homepage du site {% endblock %}
+{% block body %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Démo complète du 2024.06.06
+			</h3>
+			<h5>
+				Point de départ : CRUD sur 3 tables autour des films et leurs genres associés<br>
+			</h5>
+			<ul>
+				<li class="list-item">
+					<a href="{{ url_for('donnees_afficher', id_compte_sel=0) }}">Base de données principale</a>
+				</li>
+				<li class="list-item">
+					<a href="/readme">Lire le readme.md</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
